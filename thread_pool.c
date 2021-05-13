@@ -13,6 +13,8 @@ typedef struct id{
     int id;
 }id;
 
+static id id_array[MAX_THREAD] = {0};
+
 static void *thread_entity(void *arg);
 
 thread_pool* thread_pool_create(int thread_num)
@@ -59,7 +61,6 @@ thread_pool* thread_pool_create(int thread_num)
     }
 
     int alive = 0;
-    id id_array[MAX_THREAD] = {0};
     for (int i = 0;i < thread_num;i++){
         id_array[i].id = i;
         id_array[i].p = pool;
